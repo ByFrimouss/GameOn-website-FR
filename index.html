@@ -60,7 +60,7 @@
               onsubmit="return validate();"
             >
               <div class="formData">
-                <label>Prénom</label><br />
+                <label for="first">Prénom</label><br />
                 <input
                   class="text-control"
                   type="text"
@@ -70,16 +70,17 @@
                 /><br />
               </div>
               <div class="formData">
-                <label>Nom</label><br />
+                <label for="last">Nom</label><br />
                 <input
                   class="text-control"
                   type="text"
                   id="last"
                   name="last"
+                  minlength="2"
                 /><br />
               </div>
               <div class="formData">
-                <label>E-mail</label><br />
+                <label for="email">E-mail</label><br />
                 <input
                   class="text-control"
                   type="email"
@@ -88,7 +89,7 @@
                 /><br />
               </div>
               <div class="formData">
-                <label>Date de naissance</label><br />
+                <label for="birthdate">Date de naissance</label><br />
                 <input
                   class="text-control"
                   type="date"
@@ -97,7 +98,7 @@
                 /><br />
               </div>
               <div class="formData">
-                <label
+                <label for="quantity"
                   >À combien de tournois GameOn avez-vous déjà participé
                   ?</label
                 ><br />
@@ -110,8 +111,9 @@
                   max="99"
                 />
               </div>
+
               <p class="text-label">
-                A quel tournoi souhaitez-vous participer cette année ?
+                À quel tournoi souhaitez-vous participer cette année ?
               </p>
               <div class="formData">
                 <input
@@ -121,10 +123,10 @@
                   name="location"
                   value="New York"
                 />
-                <label class="checkbox-label" for="location1">
-                  <span class="checkbox-icon"></span>
-                  New York</label
+                <label class="checkbox-label" for="location1"
+                  ><span class="checkbox-icon"></span>New York</label
                 >
+
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -132,10 +134,10 @@
                   name="location"
                   value="San Francisco"
                 />
-                <label class="checkbox-label" for="location2">
-                  <span class="checkbox-icon"></span>
-                  San Francisco</label
+                <label class="checkbox-label" for="location2"
+                  ><span class="checkbox-icon"></span>San Francisco</label
                 >
+
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -143,10 +145,10 @@
                   name="location"
                   value="Seattle"
                 />
-                <label class="checkbox-label" for="location3">
-                  <span class="checkbox-icon"></span>
-                  Seattle</label
+                <label class="checkbox-label" for="location3"
+                  ><span class="checkbox-icon"></span>Seattle</label
                 >
+
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -154,10 +156,10 @@
                   name="location"
                   value="Chicago"
                 />
-                <label class="checkbox-label" for="location4">
-                  <span class="checkbox-icon"></span>
-                  Chicago</label
+                <label class="checkbox-label" for="location4"
+                  ><span class="checkbox-icon"></span>Chicago</label
                 >
+
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -165,10 +167,10 @@
                   name="location"
                   value="Boston"
                 />
-                <label class="checkbox-label" for="location5">
-                  <span class="checkbox-icon"></span>
-                  Boston</label
+                <label class="checkbox-label" for="location5"
+                  ><span class="checkbox-icon"></span>Boston</label
                 >
+
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -176,9 +178,8 @@
                   name="location"
                   value="Portland"
                 />
-                <label class="checkbox-label" for="location6">
-                  <span class="checkbox-icon"></span>
-                  Portland</label
+                <label class="checkbox-label" for="location6"
+                  ><span class="checkbox-icon"></span>Portland</label
                 >
               </div>
 
@@ -187,26 +188,21 @@
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
-                  checked
+                  required
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
-                  <span class="checkbox-icon"></span>
-                  J'ai lu et accepté les conditions d'utilisation.
-                </label>
-                <br />
+                <label class="checkbox2-label" for="checkbox1"
+                  ><span class="checkbox-icon"></span>J'ai lu et accepté les
+                  conditions d'utilisation.</label
+                ><br />
+
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
-                <label class="checkbox2-label" for="checkbox2">
-                  <span class="checkbox-icon"></span>
-                  Je Je souhaite être prévenu des prochains évènements.
-                </label>
-                <br />
+                <label class="checkbox2-label" for="checkbox2"
+                  ><span class="checkbox-icon"></span>Je souhaite être prévenu
+                  des prochains évènements.</label
+                ><br />
               </div>
-              <input
-                class="btn-submit"
-                type="submit"
-                class="button"
-                value="C'est parti"
-              />
+
+              <input class="btn-submit" type="submit" value="C'est parti" />
             </form>
           </div>
         </div>
