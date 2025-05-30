@@ -32,12 +32,10 @@ function closeModal() {
   const confirmationMessage = document.getElementById("confirmation-message");
 
   modalbg.style.display = "none";
-
-  if (confirmationMessage.classList.contains("active")) {
-    confirmationMessage.classList.remove("active");
-    form.style.display = "block";
-    // Optionnel : form.reset();
-  }
+  document.body.classList.remove("modal-open");
+  form.style.display = "block"; // Pour réinitialiser pour la prochaine fois
+  confirmationMessage.classList.remove("active"); // Cacher le message
+  // form.reset(); // Tu peux l’activer si tu veux vider les champs
 }
 
 function validate() {
@@ -91,8 +89,8 @@ function validate() {
   }
 
   // Quantité
-  if (!Number.isInteger(Number(quantity.value)) || quantity.value < 0) {
-    showError(quantity, "Veuillez entrer un nombre entier valide.");
+  if (quantity.value === "" || isNaN(quantity.value) || quantity.value < 0) {
+    showError(quantity, "Veuillez entrer un nombre valide.");
   }
 
   // Lieu sélectionné
@@ -104,10 +102,7 @@ function validate() {
     }
   }
   if (!locationSelected) {
-    showError(
-      locationRadios[0].parentElement,
-      "Veuillez sélectionner une ville."
-    );
+    showError(locationRadios[0], "Veuillez sélectionner une ville.");
   }
 
   // Conditions générales
