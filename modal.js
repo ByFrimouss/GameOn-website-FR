@@ -17,7 +17,9 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
 function launchModal() {
-  modalbg.style.display = "block";
+  modalbg.style.display = "flex"; // <-- ICI on active le flex uniquement à l'ouverture
+  modalbg.style.alignItems = "center";
+  modalbg.style.justifyContent = "center";
 }
 
 // ÉVÈNEMENT AU CLIC SUR LA CROIX DE LA MODAL
@@ -26,7 +28,16 @@ closeBtn.addEventListener("click", closeModal);
 
 //  FONCTION POUR FERMER LA MODALE
 function closeModal() {
+  const form = document.querySelector("form");
+  const confirmationMessage = document.getElementById("confirmation-message");
+
   modalbg.style.display = "none";
+
+  if (confirmationMessage.classList.contains("active")) {
+    confirmationMessage.classList.remove("active");
+    form.style.display = "block";
+    // Optionnel : form.reset();
+  }
 }
 
 function validate() {
@@ -80,8 +91,8 @@ function validate() {
   }
 
   // Quantité
-  if (quantity.value === "" || isNaN(quantity.value) || quantity.value < 0) {
-    showError(quantity, "Veuillez entrer un nombre valide.");
+  if (!Number.isInteger(Number(quantity.value)) || quantity.value < 0) {
+    showError(quantity, "Veuillez entrer un nombre entier valide.");
   }
 
   // Lieu sélectionné
@@ -107,5 +118,17 @@ function validate() {
     );
   }
 
-  return isValid;
+  if (isValid) {
+    showConfirmationMessage();
+  }
+
+  return false; // Toujours bloquer le submit HTML pour rester sur la modale
+}
+
+function showConfirmationMessage() {
+  const form = document.querySelector("form");
+  const confirmationMessage = document.getElementById("confirmation-message");
+
+  form.style.display = "none";
+  confirmationMessage.classList.add("active");
 }
