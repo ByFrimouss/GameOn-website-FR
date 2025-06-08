@@ -17,7 +17,7 @@
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
-        <img alt="logo" src="Logo.png" width="auto" height="auto" />
+        <img alt="logo" src="Logo.png" class="logo" />
       </div>
       <div class="main-navbar">
         <a href="#" class="active"><span>Accueil</span></a>
@@ -25,7 +25,12 @@
         <a href="#"><span>À propos</span></a>
         <a href="#"><span>Contact</span></a>
         <a href="#"><span>Évènements passés</span></a>
-        <a href="javascript:void(0);" class="icon" onclick="editNav()">
+        <a
+          href="javascript:void(0);"
+          class="icon"
+          id="burgerIcon"
+          onclick="editNav()"
+        >
           <i class="fa fa-bars"></i>
         </a>
       </div>
@@ -66,7 +71,6 @@
                   type="text"
                   id="first"
                   name="first"
-                  minlength="2"
                 /><br />
               </div>
               <div class="formData">
@@ -183,23 +187,22 @@
                 >
               </div>
 
+              <!-- CASE OBLIGATOIRE -->
               <div class="formData">
-                <input
-                  class="checkbox-input"
-                  type="checkbox"
-                  id="checkbox1"
-                  required
-                />
-                <label class="checkbox2-label" for="checkbox1"
-                  ><span class="checkbox-icon"></span>J'ai lu et accepté les
-                  conditions d'utilisation.</label
-                ><br />
+                <input class="checkbox-input" type="checkbox" id="checkbox1" />
+                <label class="checkbox2-label" for="checkbox1">
+                  <span class="checkbox-icon"></span>
+                  J'ai lu et accepté les conditions d'utilisation.
+                </label>
+              </div>
 
+              <!-- CASE FACULTATIVE -->
+              <div class="formData">
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
-                <label class="checkbox2-label" for="checkbox2"
-                  ><span class="checkbox-icon"></span>Je souhaite être prévenu
-                  des prochains évènements.</label
-                ><br />
+                <label class="checkbox2-label" for="checkbox2">
+                  <span class="checkbox-icon"></span>
+                  Je souhaite être prévenu des prochains évènements.
+                </label>
               </div>
 
               <input class="btn-submit" type="submit" value="C'est parti" />

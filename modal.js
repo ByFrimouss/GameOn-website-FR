@@ -1,28 +1,46 @@
+// CODE DU BURGER PRECEDENT
+
+// function editNav() {
+//   var x = document.getElementById("myTopnav");
+//   if (x.className === "topnav") {
+//     x.className += " responsive";
+//   } else {
+//     x.className = "topnav";
+//   }
+// }
+
+// MISE A JOUR DU CODE POUR LE MENU BURGER
 function editNav() {
   var x = document.getElementById("myTopnav");
+  var icon = document.querySelector("#burgerIcon i");
+
   if (x.className === "topnav") {
     x.className += " responsive";
+    icon.classList.remove("fa-bars");
+    icon.classList.add("fa-times");
   } else {
     x.className = "topnav";
+    icon.classList.remove("fa-times");
+    icon.classList.add("fa-bars");
   }
 }
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
+// const formData = document.querySelectorAll(".formData");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
 function launchModal() {
-  modalbg.style.display = "flex"; // <-- ICI on active le flex uniquement à l'ouverture
+  modalbg.style.display = "flex";
   modalbg.style.alignItems = "center";
   modalbg.style.justifyContent = "center";
 }
 
-// ÉVÈNEMENT AU CLIC SUR LA CROIX DE LA MODAL
+// ÉVÈNEMENT AU CLIC SUR LA CROIX DES MODALES
 const closeBtn = document.querySelector(".close");
 closeBtn.addEventListener("click", closeModal);
 
@@ -32,10 +50,9 @@ function closeModal() {
   const confirmationMessage = document.getElementById("confirmation-message");
 
   modalbg.style.display = "none";
-  document.body.classList.remove("modal-open");
-  form.style.display = "block"; // Pour réinitialiser pour la prochaine fois
+  // document.body.classList.remove("modal-open"); Empêcher le scroll du body
+  form.style.display = "block"; // Réinitialiser pour la prochaine soumission
   confirmationMessage.classList.remove("active"); // Cacher le message
-  // form.reset(); // Tu peux l’activer si tu veux vider les champs
 }
 
 function validate() {
@@ -57,8 +74,8 @@ function validate() {
   function showError(element, message) {
     const error = document.createElement("div");
     error.className = "error-message";
-    error.style.color = "red";
-    error.style.fontSize = "0.6em";
+    error.style.color = "#fe142f";
+    error.style.fontSize = "0.7em";
     error.textContent = message;
     element.parentElement.appendChild(error);
     isValid = false;
@@ -117,7 +134,7 @@ function validate() {
     showConfirmationMessage();
   }
 
-  return false; // Toujours bloquer le submit HTML pour rester sur la modale
+  return false;
 }
 
 function showConfirmationMessage() {
