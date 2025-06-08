@@ -50,7 +50,6 @@ function closeModal() {
   const confirmationMessage = document.getElementById("confirmation-message");
 
   modalbg.style.display = "none";
-  // document.body.classList.remove("modal-open"); Empêcher le scroll du body
   form.style.display = "block"; // Réinitialiser pour la prochaine soumission
   confirmationMessage.classList.remove("active"); // Cacher le message
 }
@@ -137,10 +136,13 @@ function validate() {
   return false;
 }
 
+// MODALE DE CONFIRMATION
+
 function showConfirmationMessage() {
   const form = document.querySelector("form");
   const confirmationMessage = document.getElementById("confirmation-message");
 
+  form.reset(); // 👈 Réinitialise les champs du formulaire
   form.style.display = "none";
   confirmationMessage.classList.add("active");
 }
