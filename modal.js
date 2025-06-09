@@ -9,55 +9,58 @@
 //   }
 // }
 
-// MISE A JOUR DU CODE POUR LE MENU BURGER
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  var icon = document.querySelector("#burgerIcon i");
+// ============================================
+//  MENU BURGER RESPONSIVE
+// ============================================
 
-  if (x.className === "topnav") {
-    x.className += " responsive";
+function editNav() {
+  const nav = document.getElementById("myTopnav");
+  const icon = document.querySelector("#burgerIcon i");
+
+  if (nav.className === "topnav") {
+    nav.className += " responsive";
     icon.classList.remove("fa-bars");
     icon.classList.add("fa-times");
   } else {
-    x.className = "topnav";
+    nav.className = "topnav";
     icon.classList.remove("fa-times");
     icon.classList.add("fa-bars");
   }
 }
 
-// DOM Elements
+// ============================================
+//  MODALE - AFFICHAGE & FERMETURE
+// ============================================
+
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-// const formData = document.querySelectorAll(".formData");
+const closeBtn = document.querySelector(".close");
 
-// launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+closeBtn.addEventListener("click", closeModal);
 
-// launch modal form
 function launchModal() {
   modalbg.style.display = "flex";
   modalbg.style.alignItems = "center";
   modalbg.style.justifyContent = "center";
 }
 
-// ÉVÈNEMENT AU CLIC SUR LA CROIX DES MODALES
-const closeBtn = document.querySelector(".close");
-closeBtn.addEventListener("click", closeModal);
-
-//  FONCTION POUR FERMER LA MODALE
 function closeModal() {
   const form = document.querySelector("form");
   const confirmationMessage = document.getElementById("confirmation-message");
 
   modalbg.style.display = "none";
-  form.style.display = "block"; // Réinitialiser pour la prochaine soumission
-  confirmationMessage.classList.remove("active"); // Cacher le message
+  form.style.display = "block";
+  confirmationMessage.classList.remove("active");
 }
+
+// ============================================
+//  FORMULAIRE - VALIDATION
+// ============================================
 
 function validate() {
   let isValid = true;
 
-  // Récupérer les champs
   const firstName = document.getElementById("first");
   const lastName = document.getElementById("last");
   const email = document.getElementById("email");
@@ -66,10 +69,10 @@ function validate() {
   const locationRadios = document.getElementsByName("location");
   const termsAccepted = document.getElementById("checkbox1");
 
-  // Reset messages d'erreur
+  // Supprimer anciens messages d'erreur
   document.querySelectorAll(".error-message").forEach((el) => el.remove());
 
-  // Fonction utilitaire pour afficher une erreur
+  //  Affiche une erreur sur un champ
   function showError(element, message) {
     const error = document.createElement("div");
     error.className = "error-message";
@@ -79,6 +82,8 @@ function validate() {
     element.parentElement.appendChild(error);
     isValid = false;
   }
+
+  // Validation de chaque champ
 
   // Prénom
   if (!firstName.value.trim() || firstName.value.trim().length < 2) {
@@ -136,13 +141,15 @@ function validate() {
   return false;
 }
 
-// MODALE DE CONFIRMATION
+// ============================================
+//  AFFICHAGE DU MESSAGE DE CONFIRMATION
+// ============================================
 
 function showConfirmationMessage() {
   const form = document.querySelector("form");
   const confirmationMessage = document.getElementById("confirmation-message");
 
-  form.reset(); // 👈 Réinitialise les champs du formulaire
+  form.reset(); // Réinitialiser le formulaire après validation
   form.style.display = "none";
   confirmationMessage.classList.add("active");
 }
